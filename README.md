@@ -112,11 +112,11 @@ If you wish to add, edit or remove VPN user accounts, refer to <a href="docs/man
 
 Clients are set to use <a href="https://developers.google.com/speed/public-dns/" target="_blank">Google Public DNS</a> when the VPN is active. If another DNS provider is preferred, replace `8.8.8.8` and `8.8.4.4` in both `/etc/ppp/options.xl2tpd` and `/etc/ipsec.conf`. Then reboot your server.
 
-When connecting via `IPsec/L2TP`, the VPN server has IP `192.168.42.1` within the VPN subnet `192.168.42.0/24`.
-
 For servers with an external firewall (e.g. <a href="https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-network-security.html" target="_blank">EC2</a>/<a href="https://cloud.google.com/compute/docs/networking#firewalls" target="_blank">GCE</a>), open UDP ports 500 & 4500, and TCP port 22 (for SSH).
 
-If your server uses a custom SSH port (not 22) or runs other services, edit IPTables rules in the scripts before using. Or edit these files after install and reboot: `/etc/iptables.rules`, `/etc/iptables/rules.v4` and/or `/etc/sysconfig/iptables`.
+To open additional ports on the server, edit the IPTables rules in `/etc/iptables.rules` and/or `/etc/iptables/rules.v4` (Ubuntu/Debian), or `/etc/sysconfig/iptables` (CentOS). Then reboot your server.
+
+When connecting via `IPsec/L2TP`, the VPN server has IP `192.168.42.1` within the VPN subnet `192.168.42.0/24`.
 
 The scripts will backup existing config files before making changes, with `.old-date-time` suffix.
 
